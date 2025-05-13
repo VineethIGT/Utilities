@@ -101,20 +101,3 @@ foreach ($file in $files) {
 }
 
 Write-Host "`nTotal matches found: $totalMatches" -ForegroundColor Green
-
-# Example usage:
-
-# Basic search
-#.\FindStr.ps1 -pattern "someKeyword"
-
-# Search with multiple file types
-#.\FindStr.ps1 -pattern "someKeyword" -include @("*.cs","*.js") -recursive
-
-# Exclude certain files
-#.\FindStr.ps1 -pattern "someKeyword" -exclude @("*.min.js","*.generated.cs") -recursive
-
-# Show context lines
-#.\FindStr.ps1 -pattern "someKeyword" -context -contextLines 3
-
-# Count only
-#.\FindStr.ps1 -pattern "someKeyword" -countOnly
