@@ -38,10 +38,22 @@ param(
     [switch]$countOnly
 )
 
+# List of file extensions that should always be excluded
+$alwaysExcludeExtensions = @(
+    ".exe", ".dll", ".bin", ".obj", ".zip", ".tar", ".gz", ".7z", ".rar",
+    ".tlog", ".pdb", ".lib", ".db", ".db-shm", ".db-wal", ".suo", ".log", 
+    ".metagen", ".txt"
+)
+
 # Function to check if a file should be excluded
 function ShouldExcludeFile($file) {
     foreach ($pattern in $exclude) {
         if ($file.Name -like $pattern) {
+            return $true
+        }
+    }
+    foreach ($ext in $alwaysExcludeExtensions) {
+        if ($file.Extension -ieq $ext) {
             return $true
         }
     }
